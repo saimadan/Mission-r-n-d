@@ -3,7 +3,7 @@ Mission-r-n-d
 
 2k14 mission r&amp;d classes
 #include<stdio.h>
-int isTriangle(int x1,int y1,int x2,int y2,int x3,int y3)
+int isTriangle(int x1,int y1,int x2,int y2,int x3,int y3)// checking whether the points lie on the same line
 {
     if((y2-y1)*(x3-x1)==(y3-y1)*(x2-x1))
      return 1;
@@ -46,7 +46,7 @@ int main()
          scanf("%d%d%d%d%d%d",&x1,&y1,&x2,&y2,&x3,&y3);
          if(isTriangle(x1,y1,x2,y2,x3,y3))
          {
-             printf("triangle not possible\n");
+             printf("triangle not possible all are lying on the same line i.e, collinear\n");
          }
          else
          {
@@ -56,11 +56,10 @@ int main()
 
              int total=(a+b+c);
              int c1,c2;
-             if(isequal(a,total))
-             {
-                 printf("equilateral triangle\n");
-             }
-             else if((c1=isright(a,b,c,total))||(c2=isIsosceles(a,b,c)))
+
+            c1=isright(a,b,c,total);
+            c2=isIsosceles(a,b,c);
+             if(c1||c2)
              {
                 if(c1&&c2)
                 {
@@ -75,6 +74,11 @@ int main()
                     printf("Isosceles triangle\n");
                 }
              }
+            else if(isequal(a,total))
+             {
+                 printf("equilateral triangle\n");
+             }
+
              else
              {
                  printf("Scalene triangle\n");
@@ -83,4 +87,3 @@ int main()
      }
     return 0;
 }
-
